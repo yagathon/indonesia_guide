@@ -1,5 +1,7 @@
 class Strings {
-  String appName = "INDONESIA GUIDANCE";
+  String appName = "INDONESIA PARADISE";
   String appNameHeader = "INDONESIA";
-  String appNameFooter = "GUIDANCE";
+  String appNameFooter = "PARADISE";
+
+  String welcomePageHeader = "Welcome to Indonesia";
 }

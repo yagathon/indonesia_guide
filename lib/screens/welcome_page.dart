@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
-import 'package:indonesia_guide/screens/article_filter_page.dart';
-import 'package:indonesia_guide/screens/article_page.dart';
+import 'package:indonesia_guide/widgets/custom_app_bar.dart';
+import 'package:indonesia_guide/widgets/custom_menu_icon.dart';
 
 class WelcomePage extends StatefulWidget {
   static const String route = RouteName.routeWelcomePage;
@@ -16,42 +17,50 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: const CustomAppBar(
+          isArrowInvisible: false,
+          actionWidgets: [
+            CustomMenuIcon(
+              icon: Icons.article_outlined,
+              semanticLabel: "Create Article",
+              routeName: RouteName.routeDummyPage,
+            ),
+            CustomMenuIcon(
+              icon: Icons.filter_alt,
+              semanticLabel: "Search By Filter",
+              routeName: RouteName.routeDummyPage,
+            ),
+            CustomMenuIcon(
+              icon: Icons.bookmark,
+              semanticLabel: "My Bucket List",
+              routeName: RouteName.routeDummyPage,
+            ),
+            CustomMenuIcon(
+              icon: Icons.info_outline,
+              semanticLabel: "General Info",
+              routeName: RouteName.routeGeneralInfoPage,
+            ),
+          ],
+        ),
         body: Column(
           children: [
             Container(
-              child: const Text("Carousel"),
-            ),
-            Container(
-              child: const Text("Welcome to Indonesia"),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ArticleFilter()),
-                );
-              },
-              child: Container(
-                child: const Text("Go to Filter"),
+              color: Colors.black38,
+              width: double.infinity,
+              height: 200,
+              child: Image(
+                image: R.assets.dummyImage1,
+                semanticLabel: "Image Slideshow",
               ),
             ),
             Container(
-              child: const Text("Indonesia Speach"),
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ArticlePage()),
-                );
-              },
-              child: Container(
-                child: const Text("Thumbnail"),
+              padding: const EdgeInsets.symmetric(
+                vertical: 10,
               ),
-            ),
-            Container(
-              child: const Text("general Info"),
+              child: Text(
+                R.strings.welcomePageHeader,
+                style: R.fontStyles.h1BlackBolds,
+              ),
             ),
           ],
         ),

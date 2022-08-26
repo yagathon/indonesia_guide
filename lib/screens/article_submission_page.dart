@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:indonesia_guide/constants/route_name.dart';
+import 'package:indonesia_guide/widgets/custom_app_bar.dart';
 
-class ArticleSubmission extends StatefulWidget {
-  const ArticleSubmission({Key? key}) : super(key: key);
+class ArticleSubmissionpage extends StatefulWidget {
+  static const String route = RouteName.routeArticleSubmissionPage;
+  const ArticleSubmissionpage({Key? key}) : super(key: key);
 
   @override
-  _ArticleSubmissionState createState() => _ArticleSubmissionState();
+  State<ArticleSubmissionpage> createState() => _ArticleSubmissionpageState();
 }
 
-class _ArticleSubmissionState extends State<ArticleSubmission> {
+class _ArticleSubmissionpageState extends State<ArticleSubmissionpage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-          child: const Icon(
-            Icons.arrow_back,
-          ),
-          onTap: (){
-            Navigator.pop(context);
-          },
-        ),
+    return const Scaffold(
+      appBar: CustomAppBar(),
+      body: Center(
+        child: Text('Submission Form'),
       ),
-      body: const Center(child: Text('Submission Form'),),
     );
   }
 }
