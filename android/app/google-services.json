@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "339317851093",
+    "project_id": "indonesia-guide",
+    "storage_bucket": "indonesia-guide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339317851093:android:d46bec9a0e191b7b86335c",
+        "android_client_info": {
+          "package_name": "com.example.indonesia_guide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339317851093-sqna3nq996nrptlp87ni661quongo2pr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2IbqwmqHv6krJqpsnXH1qkbbxJ9admTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339317851093-sqna3nq996nrptlp87ni661quongo2pr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
