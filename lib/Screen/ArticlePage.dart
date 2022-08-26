@@ -27,7 +27,7 @@ class _ArticlePageState extends State<ArticlePage> {
             );
           },
         ),
-        title: Text("ArticlePage"),
+        title: Text("ArticlePage "),
         actions: [
           GestureDetector(
             child: Icon(
