@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class ArticleFilter extends StatefulWidget {
-  const ArticleFilter({Key? key}) : super(key: key);
+class ArticleSubmission extends StatefulWidget {
+  const ArticleSubmission({Key? key}) : super(key: key);
 
   @override
-  _ArticleFilterState createState() => _ArticleFilterState();
+  _ArticleSubmissionState createState() => _ArticleSubmissionState();
 }
 
-class _ArticleFilterState extends State<ArticleFilter> {
+class _ArticleSubmissionState extends State<ArticleSubmission> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back,
           ),
           onTap: (){
@@ -21,7 +21,7 @@ class _ArticleFilterState extends State<ArticleFilter> {
           },
         ),
       ),
-      body: Center(child: Text('Filter Page'),),
+      body: const Center(child: Text('Submission Form'),),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:indonesia_guide/Screen/ArticleSubmission.dart';
-import 'package:indonesia_guide/Screen/ArticleFilter.dart';
-import 'package:indonesia_guide/Screen/WelcomePage.dart';
 import 'package:indonesia_guide/main.dart';
+import 'package:indonesia_guide/screens/article_filter_page.dart';
+import 'package:indonesia_guide/screens/article_submission_page.dart';
+import 'package:indonesia_guide/screens/welcome_page.dart';
 
 class ArticlePage extends StatefulWidget {
   const ArticlePage({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _ArticlePageState extends State<ArticlePage> {
           child: Icon(
             Icons.home,
           ),
-          onTap: (){
+          onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const WelcomePage()),
@@ -33,7 +33,7 @@ class _ArticlePageState extends State<ArticlePage> {
             child: Icon(
               Icons.filter_alt_outlined,
             ),
-            onTap: (){
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const ArticleFilter()),
@@ -44,10 +44,11 @@ class _ArticlePageState extends State<ArticlePage> {
             child: Icon(
               Icons.playlist_add,
             ),
-            onTap: (){
+            onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ArticleSubmission()),
+                MaterialPageRoute(
+                    builder: (context) => const ArticleSubmission()),
               );
             },
           ),
@@ -57,7 +58,8 @@ class _ArticlePageState extends State<ArticlePage> {
         ],
       ),
       body: Center(
-        child: Text("ArticlePage"),),
+        child: Text("ArticlePage"),
+      ),
     );
   }
 }
