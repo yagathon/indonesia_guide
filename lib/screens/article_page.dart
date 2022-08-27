@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
+import 'package:indonesia_guide/widgets/article_viewer.dart';
 import 'package:indonesia_guide/widgets/custom_app_bar.dart';
 import 'package:indonesia_guide/widgets/custom_menu_icon.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -17,6 +19,14 @@ class _ArticlePageState extends State<ArticlePage> {
   final _controller = PageController();
   var totalPage = 3;
   var curPage = 0;
+
+  List<Widget> generatePages() {
+    return [
+      ArticleViewer(),
+      ArticleViewer(),
+      ArticleViewer(),
+    ];
+  }
 
   @override
   void dispose() {
@@ -49,7 +59,7 @@ class _ArticlePageState extends State<ArticlePage> {
         ],
       ),
       body: Container(
-        padding: const EdgeInsets.only(bottom: 80),
+        padding: const EdgeInsets.only(bottom: 35),
         child: PageView(
           controller: _controller,
           onPageChanged: ((value) {
@@ -57,28 +67,13 @@ class _ArticlePageState extends State<ArticlePage> {
               curPage = value;
             });
           }),
-          children: [
-            Container(
-              child: Container(
-                color: Colors.transparent,
-                child: const Center(child: Text("Page 1")),
-              ),
-            ),
-            Container(
-              color: Colors.transparent,
-              child: const Center(child: Text("Page 2")),
-            ),
-            Container(
-              color: Colors.transparent,
-              child: const Center(child: Text("Page 3")),
-            ),
-          ],
+          children: generatePages(),
         ),
       ),
       bottomSheet: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        color: Colors.transparent,
-        height: 80,
+        color: Colors.blueGrey.shade50,
+        height: 35,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -91,7 +86,7 @@ class _ArticlePageState extends State<ArticlePage> {
               },
               child: Text(
                 curPage != 0 ? "PREV" : "",
-                style: R.fontStyles.normalYellowBold18,
+                style: R.fontStyles.normalYellowBold14Spacing,
               ),
             ),
             Center(
@@ -119,7 +114,7 @@ class _ArticlePageState extends State<ArticlePage> {
               },
               child: Text(
                 curPage != (totalPage - 1) ? "NEXT" : "",
-                style: R.fontStyles.normalYellowBold18,
+                style: R.fontStyles.normalYellowBold14Spacing,
               ),
             ),
           ],

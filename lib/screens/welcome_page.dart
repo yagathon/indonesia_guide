@@ -115,7 +115,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   child: Text(
                     R.strings.welcomePageHeader,
-                    style: R.fontStyles.h1BlackBolds,
+                    style: R.fontStyles.h1BlackBold,
                   ),
                 ),
                 Container(

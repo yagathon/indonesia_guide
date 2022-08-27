@@ -10,4 +10,7 @@ class Strings {
   String bucketList = "My Bucket List";
   String generalInfo = "General Info";
   String shareArticle = "Share Article";
+
+  String articleViewerRatingIntro = "Do you find this article helpful?";
+  String articleViewerAddBucketList = "Add this article to your bucket list";
 }
