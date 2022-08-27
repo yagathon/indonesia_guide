@@ -8,7 +8,7 @@ import 'package:indonesia_guide/util/function_logic.dart';
 import 'package:indonesia_guide/widgets/article_viewer.dart';
 import 'package:indonesia_guide/widgets/custom_app_bar.dart';
 import 'package:indonesia_guide/widgets/custom_menu_icon.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+// import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ArticlePage extends StatefulWidget {
   static const String route = RouteName.routeArticlePage;
@@ -20,8 +20,8 @@ class ArticlePage extends StatefulWidget {
 
 class _ArticlePageState extends State<ArticlePage> {
   final _controller = PageController();
-  var totalPage = 3;
-  var curPage = 0;
+  // var totalPage = 3;
+  // var curPage = 0;
 
   // List<Widget> generatePages() {
   //   return [
@@ -39,9 +39,8 @@ class _ArticlePageState extends State<ArticlePage> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments;
-
-    print('args: ' + args.toString() );
+    // final args = ModalRoute.of(context)!.settings.arguments;
+    // debugPrint('args: ' + args.toString());
 
     return Scaffold(
       appBar: CustomAppBar(
@@ -59,23 +58,23 @@ class _ArticlePageState extends State<ArticlePage> {
         ],
       ),
       body: Container(
-        padding: const EdgeInsets.only(bottom: 35),
+        padding: const EdgeInsets.only(bottom: 0), //35
         child: StreamBuilder<QuerySnapshot>(
           stream: FirebaseApiArticles.readArticles(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              print('Error Occured! ${snapshot.error.toString()}');
-              return Center(child: Text('Sth went wrong!'));
+              debugPrint('Error Occured! ${snapshot.error.toString()}');
+              return const Center(child: Text('Sth went wrong!'));
             } else if (snapshot.hasData) {
-              print("test");
+              debugPrint("test");
 
-              List<Object?> datas = snapshot.data!.docs.toList(); 
+              List<Object?> datas = snapshot.data!.docs.toList();
 
               return PageView.builder(
                 controller: _controller,
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
-                  final currentData = snapshot.data!.docs.toList()[index]; 
+                  final currentData = snapshot.data!.docs.toList()[index];
                   final article = Article(
                     title: currentData['title'],
                     province: currentData['province'],
@@ -84,7 +83,7 @@ class _ArticlePageState extends State<ArticlePage> {
                     description: currentData['description'],
                     rating: currentData['rating'],
                     budget: currentData['budget'],
-                    category: currentData['category'],                  
+                    category: currentData['category'],
                   );
                   return ArticleViewer(article: article);
                 },
@@ -93,63 +92,64 @@ class _ArticlePageState extends State<ArticlePage> {
               return Center(
                 child: CircularProgressIndicator(
                   backgroundColor: Theme.of(context).bottomAppBarColor,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
+                  valueColor:
+                      const AlwaysStoppedAnimation<Color>(Colors.orange),
                 ),
               );
             }
           },
         ),
       ),
-      bottomSheet: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        color: Colors.blueGrey.shade50,
-        height: 35,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            TextButton(
-              onPressed: () {
-                if (curPage != 0) {
-                  final page = curPage - 1;
-                  _controller.jumpToPage(page);
-                }
-              },
-              child: Text(
-                curPage != 0 ? "PREV" : "",
-                style: R.fontStyles.normalYellowBold14Spacing,
-              ),
-            ),
-            Center(
-              child: SmoothPageIndicator(
-                controller: _controller,
-                count: totalPage,
-                effect: WormEffect(
-                  spacing: 16,
-                  dotColor: Colors.black12,
-                  activeDotColor: R.colors.primary,
-                ),
-                onDotClicked: ((index) => _controller.animateToPage(
-                      index,
-                      duration: const Duration(microseconds: 500),
-                      curve: Curves.easeIn,
-                    )),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                if (curPage != (totalPage - 1)) {
-                  final page = curPage + 1;
-                  _controller.jumpToPage(page);
-                }
-              },
-              child: Text(
-                curPage != (totalPage - 1) ? "NEXT" : "",
-                style: R.fontStyles.normalYellowBold14Spacing,
-              ),
-            ),
-          ],
-        ),
-      ),
+      // bottomSheet: Container(
+      //   padding: const EdgeInsets.symmetric(horizontal: 10),
+      //   color: Colors.blueGrey.shade50,
+      //   height: 35,
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: [
+      //       TextButton(
+      //         onPressed: () {
+      //           if (curPage != 0) {
+      //             final page = curPage - 1;
+      //             _controller.jumpToPage(page);
+      //           }
+      //         },
+      //         child: Text(
+      //           curPage != 0 ? "PREV" : "",
+      //           style: R.fontStyles.normalYellowBold14Spacing,
+      //         ),
+      //       ),
+      //       Center(
+      //         child: SmoothPageIndicator(
+      //           controller: _controller,
+      //           count: totalPage,
+      //           effect: WormEffect(
+      //             spacing: 16,
+      //             dotColor: Colors.black12,
+      //             activeDotColor: R.colors.primary,
+      //           ),
+      //           onDotClicked: ((index) => _controller.animateToPage(
+      //                 index,
+      //                 duration: const Duration(microseconds: 500),
+      //                 curve: Curves.easeIn,
+      //               )),
+      //         ),
+      //       ),
+      //       TextButton(
+      //         onPressed: () {
+      //           if (curPage != (totalPage - 1)) {
+      //             final page = curPage + 1;
+      //             _controller.jumpToPage(page);
+      //           }
+      //         },
+      //         child: Text(
+      //           curPage != (totalPage - 1) ? "NEXT" : "",
+      //           style: R.fontStyles.normalYellowBold14Spacing,
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

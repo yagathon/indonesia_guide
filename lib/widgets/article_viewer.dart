@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_lorem/flutter_lorem.dart';
+// import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:indonesia_guide/models/article.dart';
@@ -9,10 +9,7 @@ import 'package:indonesia_guide/util/function_logic.dart';
 class ArticleViewer extends StatefulWidget {
   final Article article;
 
-  const ArticleViewer({
-    Key? key,
-    required this.article
-  }) : super(key: key);
+  const ArticleViewer({Key? key, required this.article}) : super(key: key);
 
   @override
   State<ArticleViewer> createState() => _ArticleViewerState();
@@ -30,12 +27,12 @@ class _ArticleViewerState extends State<ArticleViewer> {
   late String imgLink;
   final selectedImageIndex = ValueNotifier(0);
 
-  var dummyImages = [
+  List<ImageProvider> dummyImages = [
     R.assets.dummyImage1,
     R.assets.dummyImage2,
     R.assets.dummyImage3,
     R.assets.dummyImage4,
-    R.assets.dummyImage5
+    R.assets.dummyImage5,
   ];
 
   @override
@@ -57,20 +54,21 @@ class _ArticleViewerState extends State<ArticleViewer> {
 
   processing() {
     title = widget.article.title ?? '';
-    place = (widget.article.city ?? '') + ", " + (widget.article.province ?? '') ;
-    content = (widget.article.description ?? '') ;
-    budget = (widget.article.budget ?? '') ;
-    if(widget.article.category == null)
+    place =
+        (widget.article.city ?? '') + ", " + (widget.article.province ?? '');
+    content = (widget.article.description ?? '');
+    budget = (widget.article.budget ?? '');
+    if (widget.article.category == null)
       categories = '';
-    else{
-      categories = widget.article.category![0] ;
+    else {
+      categories = widget.article.category![0];
     }
 
     curRate = 5.0;
     // curRate = (widget.article.rating ?? 0.0) as double;
-    if(widget.article.imageLinks == null)
+    if (widget.article.imageLinks == null)
       imgLink = '';
-    else{
+    else {
       imgLink = widget.article.imageLinks![0];
     }
 
@@ -154,6 +152,10 @@ class _ArticleViewerState extends State<ArticleViewer> {
                   ValueListenableBuilder(
                     valueListenable: selectedImageIndex,
                     builder: (BuildContext context, value, Widget? child) {
+                      final img = Image.network(imgLink);
+                      if (!dummyImages.contains(img.image)) {
+                        dummyImages.insert(0, img.image);
+                      }
                       return Container(
                         margin: const EdgeInsets.symmetric(vertical: 20),
                         child: Column(
@@ -162,7 +164,13 @@ class _ArticleViewerState extends State<ArticleViewer> {
                               margin: const EdgeInsets.only(bottom: 10),
                               height: 200,
                               width: double.infinity,
-                              child: Image.network(imgLink),
+                              // child: img,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: dummyImages[selectedImageIndex.value],
+                                ),
+                              ),
                             ),
                             SizedBox(
                               width: double.infinity,
