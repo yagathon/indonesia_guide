@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
-import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:indonesia_guide/util/function_logic.dart';
 import 'package:indonesia_guide/widgets/menu_button.dart';
@@ -23,7 +22,6 @@ class _WelcomePageState extends State<WelcomePage> {
     R.assets.rawon,
     R.assets.traditionalHouseWestSumba,
     R.assets.serimpi,
-
   ];
 
   final themeMode = ValueNotifier(0);
