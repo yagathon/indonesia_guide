@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -83,7 +84,11 @@ class _ArticleViewerState extends State<ArticleViewer> {
 
   shareArticle() {
     debugPrint("shareArticle");
-    showComingSoonSnackBar(context);
+    Clipboard.setData(
+      const ClipboardData(
+        text: "https://indonesiaguide.page.link/article_page",
+      ),
+    ).then((value) => showShareSnackBar(context));
   }
 
   giveRate(double star) {

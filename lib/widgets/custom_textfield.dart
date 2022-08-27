@@ -8,11 +8,15 @@ class CustomTextfield extends StatelessWidget {
     required this.hintText,
     this.controller,
     this.enabled = true,
+    this.keyboardType = TextInputType.text,
+    this.maxLines = 1,
   }) : super(key: key);
   final String title;
   final String hintText;
   final bool enabled;
   final TextEditingController? controller;
+  final TextInputType? keyboardType;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +36,8 @@ class CustomTextfield extends StatelessWidget {
           TextField(
             enabled: enabled,
             controller: controller,
+            keyboardType: keyboardType,
+            maxLines: maxLines,
             decoration: InputDecoration(
               // border: InputBorder.none,
               hintText: hintText,

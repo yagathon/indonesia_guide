@@ -57,6 +57,7 @@ class _WelcomePageState extends State<WelcomePage> {
                               autoPlayCurve: Curves.linear,
                               enableInfiniteScroll: false,
                               enlargeCenterPage: true,
+                              enlargeStrategy: CenterPageEnlargeStrategy.height,
                               onPageChanged: ((index, reason) {
                                 themeMode.value = index;
                               }),
@@ -169,9 +170,10 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                       MenuButton(
                         icon: Icons.info_outline,
-                        semanticLabel: R.strings.generalInfo,
-                        onTap: () => showComingSoonSnackBar(context),
-                        menuTitle: R.strings.generalInfo,
+                        semanticLabel: R.strings.travelInformationPageTitle,
+                        routeName: RouteName.routeGeneralInfoPage,
+                        //onTap: () => //showComingSoonSnackBar(context),
+                        menuTitle: R.strings.travelInformationPageTitle,
                       ),
                     ],
                   ),
