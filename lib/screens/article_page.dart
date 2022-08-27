@@ -1,15 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:indonesia_guide/api/firebase_api_articles.dart';
-import 'package:indonesia_guide/constants/r.dart';
-import 'package:indonesia_guide/main.dart';
-import 'package:indonesia_guide/models/article.dart';
-import 'package:indonesia_guide/models/user.dart';
-import 'package:indonesia_guide/screens/article_filter_page.dart';
-import 'package:indonesia_guide/screens/article_submission_page.dart';
-import 'package:indonesia_guide/screens/welcome_page.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
+import 'package:indonesia_guide/util/function_logic.dart';
 import 'package:indonesia_guide/widgets/article_viewer.dart';
 import 'package:indonesia_guide/widgets/custom_app_bar.dart';
 import 'package:indonesia_guide/widgets/custom_menu_icon.dart';
@@ -24,7 +16,6 @@ class ArticlePage extends StatefulWidget {
 }
 
 class _ArticlePageState extends State<ArticlePage> {
-
   final _controller = PageController();
   var totalPage = 3;
   var curPage = 0;
@@ -51,7 +42,7 @@ class _ArticlePageState extends State<ArticlePage> {
           CustomMenuIcon(
             icon: Icons.bookmark,
             semanticLabel: R.strings.bucketList,
-            routeName: RouteName.routeDummyPage,
+            onTap: () => showComingSoonSnackBar(context),
           ),
           CustomMenuIcon(
             icon: Icons.filter_alt,
