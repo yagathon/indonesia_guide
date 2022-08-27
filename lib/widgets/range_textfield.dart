@@ -83,7 +83,7 @@ class _RangeTextfieldState extends State<RangeTextfield> {
                     ),
                   ),
                   onEditingComplete: () {
-                    print("apa sih ${endCtr.text}");
+                    debugPrint("apa sih ${endCtr.text}");
                     widget.callback(startCtr.text, endCtr.text);
                     FocusManager.instance.primaryFocus?.unfocus();
                   },
