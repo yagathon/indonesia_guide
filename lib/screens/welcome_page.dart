@@ -169,9 +169,10 @@ class _WelcomePageState extends State<WelcomePage> {
                       ),
                       MenuButton(
                         icon: Icons.info_outline,
-                        semanticLabel: R.strings.generalInfo,
-                        onTap: () => RouteName.routeGeneralInfoPage,//showComingSoonSnackBar(context),
-                        menuTitle: R.strings.generalInfo,
+                        semanticLabel: R.strings.travelInformationPageTitle,
+                        routeName: RouteName.routeGeneralInfoPage,
+                        //onTap: () => //showComingSoonSnackBar(context),
+                        menuTitle: R.strings.travelInformationPageTitle,
                       ),
                     ],
                   ),

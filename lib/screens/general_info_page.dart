@@ -12,7 +12,7 @@ class GeneralInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: R.strings.generalPageTitle,
+        title: R.strings.travelInformationPageTitle,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -21,7 +21,7 @@ class GeneralInfoPage extends StatelessWidget {
         onPressed: () {
         },
         backgroundColor: R.colors.primary,
-        child: const Icon(Icons.search_outlined),
+        child: const Icon(Icons.arrow_upward),
       ),
     );
   }
