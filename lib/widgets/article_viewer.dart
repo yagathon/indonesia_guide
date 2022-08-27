@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:indonesia_guide/util/function_logic.dart';
 
 class ArticleViewer extends StatefulWidget {
   const ArticleViewer({
@@ -60,14 +61,17 @@ class _ArticleViewerState extends State<ArticleViewer> {
 
   addToBucketList() {
     debugPrint("addToBucketList");
+    showComingSoonSnackBar(context);
   }
 
   shareArticle() {
     debugPrint("shareArticle");
+    showComingSoonSnackBar(context);
   }
 
   giveRate(double star) {
     debugPrint("giveRate => ${star.toString()}");
+    showComingSoonSnackBar(context);
   }
 
   @override
@@ -98,21 +102,28 @@ class _ArticleViewerState extends State<ArticleViewer> {
                         child: Text(title, style: R.fontStyles.h2BlackBold),
                       ),
                       const SizedBox(width: 5),
-                      GestureDetector(
-                        onTap: () => addToBucketList(),
-                        child: Icon(
-                          Icons.bookmark_add_outlined,
-                          color: R.colors.primary,
-                          semanticLabel: R.strings.articleViewerAddBucketList,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () => shareArticle(),
-                        child: Icon(
-                          Icons.share,
-                          color: R.colors.primary,
-                          semanticLabel: R.strings.shareArticle,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () => addToBucketList(),
+                            child: Icon(
+                              Icons.bookmark_add_outlined,
+                              color: R.colors.primary,
+                              semanticLabel:
+                                  R.strings.articleViewerAddBucketList,
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          GestureDetector(
+                            onTap: () => shareArticle(),
+                            child: Icon(
+                              Icons.share,
+                              color: R.colors.primary,
+                              semanticLabel: R.strings.shareArticle,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

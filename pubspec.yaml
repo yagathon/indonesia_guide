@@ -1,5 +1,5 @@
 name: indonesia_guide
-description: A new Flutter project.
+description: An app named, Indonesia Paradise, to help small business growing among international tourist.
 
 publish_to: "none"
 
@@ -22,6 +22,7 @@ dependencies:
   flutter_bounceable: ^1.0.3
   smooth_page_indicator: ^1.0.0+2
   flutter_rating_bar: ^4.0.1
+  flutter_launcher_icons: ^0.10.0
   file_picker: ^5.0.1
 
 dev_dependencies:
@@ -32,8 +33,13 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
   assets:
     - assets/
     - assets/images/
     - assets/google_fonts/
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/ic_playstore.png"
+  adaptive_icon_background: "assets/ic_playstore.png"

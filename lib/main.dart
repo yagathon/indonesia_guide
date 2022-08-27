@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indonesia_guide/constants/r.dart';
+import 'package:indonesia_guide/screens/article_filter_page.dart';
 import 'package:indonesia_guide/screens/article_page.dart';
 import 'package:indonesia_guide/screens/article_submission_page.dart';
 import 'package:indonesia_guide/screens/dummy_page.dart';
@@ -20,7 +21,12 @@ Future main() async {
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
-  runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then(
+    (_) => runApp(const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -44,6 +50,8 @@ class MyApp extends StatelessWidget {
         SplashScreen.route: (context) => const SplashScreen(),
         DummyPage.route: (context) => const DummyPage(),
         WelcomePage.route: (context) => const WelcomePage(),
+        ArticleSubmissionpage.route: (context) => const ArticleSubmissionpage(),
+        ArticleFilterPage.route: (context) => const ArticleFilterPage(),
         ArticlePage.route: (context) => const ArticlePage(),
         ArticleSubmissionpage.route:(context) => const ArticleSubmissionpage(),
         GeneralInfoPage.route: (context) => const GeneralInfoPage(),

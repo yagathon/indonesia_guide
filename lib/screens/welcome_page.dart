@@ -3,6 +3,7 @@ import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:indonesia_guide/util/function_logic.dart';
 import 'package:indonesia_guide/widgets/menu_button.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -15,11 +16,14 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   final dummyImages = [
-    R.assets.dummyImage1,
-    R.assets.dummyImage2,
-    R.assets.dummyImage3,
-    R.assets.dummyImage4,
-    R.assets.dummyImage5
+    R.assets.borobudur,
+    R.assets.bromo,
+    R.assets.wayangKulit,
+    R.assets.orangUtan,
+    R.assets.rawon,
+    R.assets.traditionalHouseWestSumba,
+    R.assets.serimpi,
+
   ];
 
   final themeMode = ValueNotifier(0);
@@ -115,7 +119,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   child: Text(
                     R.strings.welcomePageHeader,
-                    style: R.fontStyles.h1BlackBold,
+                    style: R.fontStyles.h2BlackBold,
                   ),
                 ),
                 Container(
@@ -128,7 +132,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: Colors.grey.shade300,
                   ),
-                  child: Text(lorem(paragraphs: 1, words: 50)),
+                  child: Text(R.strings.aboutIndonesia),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(
@@ -153,19 +157,19 @@ class _WelcomePageState extends State<WelcomePage> {
                       MenuButton(
                         icon: Icons.filter_alt,
                         semanticLabel: R.strings.filter,
-                        routeName: RouteName.routeArticlePage,
+                        routeName: RouteName.routeFilterPage,
                         menuTitle: R.strings.filter,
                       ),
                       MenuButton(
                         icon: Icons.bookmark,
                         semanticLabel: R.strings.bucketList,
-                        routeName: RouteName.routeDummyPage,
+                        onTap: () => showComingSoonSnackBar(context),
                         menuTitle: R.strings.bucketList,
                       ),
                       MenuButton(
                         icon: Icons.info_outline,
                         semanticLabel: R.strings.generalInfo,
-                        routeName: RouteName.routeGeneralInfoPage,
+                        onTap: () => showComingSoonSnackBar(context),
                         menuTitle: R.strings.generalInfo,
                       ),
                     ],
