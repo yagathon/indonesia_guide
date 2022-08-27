@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/screens/article_filter_page.dart';
 import 'package:indonesia_guide/screens/article_page.dart';
@@ -21,19 +23,33 @@ Future main() async {
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
+  // Get any initial links
+  final PendingDynamicLinkData? initialLink =
+      await FirebaseDynamicLinks.instance.getInitialLink();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then(
-    (_) => runApp(const MyApp()),
+    (_) => runApp(MyApp(initialLink)),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  PendingDynamicLinkData? initialLink;
+  MyApp(this.initialLink, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // if (initialLink != null) {
+    //   debugPrint("atas");
+    //   final Uri? deepLink = initialLink?.link;
+    //   // Example of using the dynamic link to push thea user to a different screen
+    //   Navigator.pushNamed(context, deepLink!.path);
+    // } else {
+    //   debugPrint("bawah");
+    // }
+
     return MaterialApp(
       title: R.strings.appName,
       theme: ThemeData(
@@ -53,7 +69,6 @@ class MyApp extends StatelessWidget {
         ArticleSubmissionpage.route: (context) => const ArticleSubmissionpage(),
         ArticleFilterPage.route: (context) => const ArticleFilterPage(),
         ArticlePage.route: (context) => const ArticlePage(),
-        ArticleSubmissionpage.route:(context) => const ArticleSubmissionpage(),
         GeneralInfoPage.route: (context) => const GeneralInfoPage(),
       },
     );
