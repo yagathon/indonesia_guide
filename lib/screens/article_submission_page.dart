@@ -158,7 +158,7 @@ class _ArticleSubmissionPageState extends State<ArticleSubmissionpage> {
                   city: cityController.text,
                   imageLinks: [imageLinkController.text],
                   description: descController.text,
-                  rating: selectedRating == "" ? 0 : int.parse(selectedRating),
+                  rating: selectedRating == "Not Selected" ? 0 : int.parse(selectedRating),
                   budget: budgetController.text,
                   category: [selectedCategory],
                   createdAt: DateTime.now()
