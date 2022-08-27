@@ -11,10 +11,10 @@ class ArticleSubmissionpage extends StatefulWidget {
   const ArticleSubmissionpage({Key? key}) : super(key: key);
 
   @override
-  State<ArticleSubmissionpage> createState() => _ArticleSubmissionpageState();
+  State<ArticleSubmissionpage> createState() => _ArticleSubmissionPageState();
 }
 
-class _ArticleSubmissionState extends State<ArticleSubmission> {
+class _ArticleSubmissionPageState extends State<ArticleSubmissionpage> {
   final titleController = TextEditingController();
   final cityController = TextEditingController();
   final provinceController = TextEditingController();
