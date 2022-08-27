@@ -8,6 +8,8 @@ class GeneralInfoPage extends StatelessWidget {
   static const String route = RouteName.routeGeneralInfoPage;
   final _scrollController = ScrollController();
 
+  GeneralInfoPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
