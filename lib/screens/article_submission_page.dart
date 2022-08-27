@@ -12,9 +12,13 @@ class ArticleSubmission extends StatefulWidget {
 }
 
 class _ArticleSubmissionState extends State<ArticleSubmission> {
-   final titleController = TextEditingController();
-   final cityController = TextEditingController();
-    final provinceController = TextEditingController();
+  final titleController = TextEditingController();
+  final cityController = TextEditingController();
+  final provinceController = TextEditingController();
+  final descController = TextEditingController();  
+  final ratingController = TextEditingController();  
+  final budgetController = TextEditingController();  
+  final categoryController = TextEditingController();  
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +45,33 @@ class _ArticleSubmissionState extends State<ArticleSubmission> {
             TextField(controller: cityController,),
             Text('Province'),
             TextField(controller: provinceController,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+              Text('Upload Image'),
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: R.colors.primary, //<-- SEE HERE
+                  primary: Colors.white,
+                ),
+                onPressed: () {},
+                child: const Text(
+                  'UploadIMage',
+                ),
+              ),
+            ]),
+            
+            Text('Article'),
+            TextField(
+              keyboardType: TextInputType.multiline,
+              maxLines: null, // <-- SEE HERE
+            ),
+            Text('Rating'),
+            TextField(controller: descController,),
+            Text('Budget'),
+            TextField(controller: descController,),
+            Text('Category'),
+            TextField(controller: descController,),
           ],            
         ),
       ),
