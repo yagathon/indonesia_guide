@@ -98,21 +98,28 @@ class _ArticleViewerState extends State<ArticleViewer> {
                         child: Text(title, style: R.fontStyles.h2BlackBold),
                       ),
                       const SizedBox(width: 5),
-                      GestureDetector(
-                        onTap: () => addToBucketList(),
-                        child: Icon(
-                          Icons.bookmark_add_outlined,
-                          color: R.colors.primary,
-                          semanticLabel: R.strings.articleViewerAddBucketList,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () => shareArticle(),
-                        child: Icon(
-                          Icons.share,
-                          color: R.colors.primary,
-                          semanticLabel: R.strings.shareArticle,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () => addToBucketList(),
+                            child: Icon(
+                              Icons.bookmark_add_outlined,
+                              color: R.colors.primary,
+                              semanticLabel:
+                                  R.strings.articleViewerAddBucketList,
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          GestureDetector(
+                            onTap: () => shareArticle(),
+                            child: Icon(
+                              Icons.share,
+                              color: R.colors.primary,
+                              semanticLabel: R.strings.shareArticle,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
