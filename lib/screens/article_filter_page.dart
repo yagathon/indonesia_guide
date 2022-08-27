@@ -88,7 +88,7 @@ class _ArticleFilterPageState extends State<ArticleFilterPage> {
           debugPrint(
               "Province: ${province ?? R.strings.category[0]}; City: ${city ?? R.strings.category[0]}; Budget from $startBudget to $endBudget; Category: ${category ?? R.strings.category[0]}");
 
-          Navigator.of(context).pushNamed(RouteName.routeArticlePage);
+          Navigator.of(context).pushNamed(RouteName.routeArticlePage, arguments: {'category' : category, 'province' : province, 'city' : city});
         },
         backgroundColor: R.colors.primary,
         child: const Icon(Icons.search_outlined),

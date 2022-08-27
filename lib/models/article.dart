@@ -5,11 +5,11 @@ class Article {
   String? title;
   String? province;
   String? city;
-  List<String>? imageLinks;
+  List<dynamic>? imageLinks;
   String? description;
   int? rating;
   String? budget;
-  List<String>? category;
+  List<dynamic>? category;
   DateTime? createdAt;
 
   Article({
@@ -50,4 +50,5 @@ class Article {
 
 class ArticleField {
   static const createdAt = 'createdAt';
+  static const category = 'category';
 }

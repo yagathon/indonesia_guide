@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:indonesia_guide/api/firebase_api_articles.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
+import 'package:indonesia_guide/models/article.dart';
 import 'package:indonesia_guide/util/function_logic.dart';
 import 'package:indonesia_guide/widgets/article_viewer.dart';
 import 'package:indonesia_guide/widgets/custom_app_bar.dart';
@@ -20,13 +23,13 @@ class _ArticlePageState extends State<ArticlePage> {
   var totalPage = 3;
   var curPage = 0;
 
-  List<Widget> generatePages() {
-    return [
-      const ArticleViewer(),
-      const ArticleViewer(),
-      const ArticleViewer(),
-    ];
-  }
+  // List<Widget> generatePages() {
+  //   return [
+  //     const ArticleViewer(),
+  //     const ArticleViewer(),
+  //     const ArticleViewer(),
+  //   ];
+  // }
 
   @override
   void dispose() {
@@ -36,6 +39,10 @@ class _ArticlePageState extends State<ArticlePage> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments;
+
+    print('args: ' + args.toString() );
+
     return Scaffold(
       appBar: CustomAppBar(
         actionWidgets: [
@@ -53,14 +60,44 @@ class _ArticlePageState extends State<ArticlePage> {
       ),
       body: Container(
         padding: const EdgeInsets.only(bottom: 35),
-        child: PageView(
-          controller: _controller,
-          onPageChanged: ((value) {
-            setState(() {
-              curPage = value;
-            });
-          }),
-          children: generatePages(),
+        child: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseApiArticles.readArticles(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              print('Error Occured! ${snapshot.error.toString()}');
+              return Center(child: Text('Sth went wrong!'));
+            } else if (snapshot.hasData) {
+              print("test");
+
+              List<Object?> datas = snapshot.data!.docs.toList(); 
+
+              return PageView.builder(
+                controller: _controller,
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, index) {
+                  final currentData = snapshot.data!.docs.toList()[index]; 
+                  final article = Article(
+                    title: currentData['title'],
+                    province: currentData['province'],
+                    city: currentData['city'],
+                    imageLinks: currentData['imageLinks'],
+                    description: currentData['description'],
+                    rating: currentData['rating'],
+                    budget: currentData['budget'],
+                    category: currentData['category'],                  
+                  );
+                  return ArticleViewer(article: article);
+                },
+              );
+            } else {
+              return Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Theme.of(context).bottomAppBarColor,
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
+                ),
+              );
+            }
+          },
         ),
       ),
       bottomSheet: Container(

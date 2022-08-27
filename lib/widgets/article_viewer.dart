@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:indonesia_guide/models/article.dart';
 import 'package:indonesia_guide/util/function_logic.dart';
 
 class ArticleViewer extends StatefulWidget {
+  final Article article;
+
   const ArticleViewer({
     Key? key,
+    required this.article
   }) : super(key: key);
 
   @override
@@ -22,9 +26,10 @@ class _ArticleViewerState extends State<ArticleViewer> {
   late String budget;
   late String categories;
   late double curRate;
+  late String imgLink;
   final selectedImageIndex = ValueNotifier(0);
 
-  final dummyImages = [
+  var dummyImages = [
     R.assets.dummyImage1,
     R.assets.dummyImage2,
     R.assets.dummyImage3,
@@ -50,12 +55,24 @@ class _ArticleViewerState extends State<ArticleViewer> {
   }
 
   processing() {
-    title = "Saung Angklung Udjo";
-    place = "Bandung, West Java";
-    content = lorem(paragraphs: 2, words: 200);
-    budget = "100";
-    categories = "Destination, Event";
-    curRate = 3;
+    title = widget.article.title ?? '';
+    place = (widget.article.city ?? '') + ", " + (widget.article.province ?? '') ;
+    content = (widget.article.description ?? '') ;
+    budget = (widget.article.budget ?? '') ;
+    if(widget.article.category == null)
+      categories = '';
+    else{
+      categories = widget.article.category![0] ;
+    }
+
+    curRate = 5.0;
+    // curRate = (widget.article.rating ?? 0.0) as double;
+    if(widget.article.imageLinks == null)
+      imgLink = '';
+    else{
+      imgLink = widget.article.imageLinks![0];
+    }
+
     setState(() {});
   }
 
@@ -140,12 +157,7 @@ class _ArticleViewerState extends State<ArticleViewer> {
                               margin: const EdgeInsets.only(bottom: 10),
                               height: 200,
                               width: double.infinity,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: dummyImages[selectedImageIndex.value],
-                                ),
-                              ),
+                              child: Image.network(imgLink),
                             ),
                             SizedBox(
                               width: double.infinity,
@@ -246,7 +258,7 @@ class _ArticleViewerState extends State<ArticleViewer> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Budget: \$$budget",
+                  "Budget: $budget",
                   style: R.fontStyles.normalBlackBold,
                 ),
                 Text(
