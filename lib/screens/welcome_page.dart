@@ -3,6 +3,7 @@ import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:indonesia_guide/util/function_logic.dart';
 import 'package:indonesia_guide/widgets/menu_button.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -118,7 +119,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   child: Text(
                     R.strings.welcomePageHeader,
-                    style: R.fontStyles.h1BlackBold,
+                    style: R.fontStyles.h2BlackBold,
                   ),
                 ),
                 Container(
@@ -150,19 +151,19 @@ class _WelcomePageState extends State<WelcomePage> {
                       MenuButton(
                         icon: Icons.article_outlined,
                         semanticLabel: R.strings.articleSubmission,
-                        routeName: RouteName.routeDummyPage,
+                        routeName: RouteName.routeArticleSubmissionPage,
                         menuTitle: R.strings.articleSubmission,
                       ),
                       MenuButton(
                         icon: Icons.filter_alt,
                         semanticLabel: R.strings.filter,
-                        routeName: RouteName.routeArticlePage,
+                        routeName: RouteName.routeFilterPage,
                         menuTitle: R.strings.filter,
                       ),
                       MenuButton(
                         icon: Icons.bookmark,
                         semanticLabel: R.strings.bucketList,
-                        routeName: RouteName.routeDummyPage,
+                        onTap: () => showComingSoonSnackBar(context),
                         menuTitle: R.strings.bucketList,
                       ),
                       MenuButton(

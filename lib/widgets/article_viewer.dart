@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:indonesia_guide/util/function_logic.dart';
 
 class ArticleViewer extends StatefulWidget {
   const ArticleViewer({
@@ -60,14 +61,17 @@ class _ArticleViewerState extends State<ArticleViewer> {
 
   addToBucketList() {
     debugPrint("addToBucketList");
+    showComingSoonSnackBar(context);
   }
 
   shareArticle() {
     debugPrint("shareArticle");
+    showComingSoonSnackBar(context);
   }
 
   giveRate(double star) {
     debugPrint("giveRate => ${star.toString()}");
+    showComingSoonSnackBar(context);
   }
 
   @override
