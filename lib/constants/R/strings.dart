@@ -4,8 +4,10 @@ class Strings {
   String appNameFooter = "PARADISE";
 
   String welcomePageHeader = "Welcome to Indonesia";
-  String welcomePageArticleSubmission = "Article Submission";
-  String welcomePageFilter = "Explore By Filter";
-  String welcomePageBucketList = "My Bucket List";
-  String welcomePageGeneralInfo = "General Info";
+
+  String articleSubmission = "Article Submission";
+  String filter = "Explore By Filter";
+  String bucketList = "My Bucket List";
+  String generalInfo = "General Info";
+  String shareArticle = "Share Article";
 }

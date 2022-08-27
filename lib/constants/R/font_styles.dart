@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:indonesia_guide/constants/r.dart';
 
 class FontStyles {
   static const double h1Tsz = 24;
@@ -34,5 +35,11 @@ class FontStyles {
   var normalWhiteBold = const TextStyle(
     fontWeight: FontWeight.w900,
     color: Colors.white60,
+  );
+
+  var normalYellowBold18 = TextStyle(
+    fontWeight: FontWeight.w900,
+    color: R.colors.primary,
+    fontSize: 18,
   );
 }

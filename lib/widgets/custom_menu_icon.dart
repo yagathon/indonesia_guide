@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CustomMenuIcon extends StatelessWidget {
-  final String routeName;
+  final String? routeName;
   final IconData icon;
   final String semanticLabel;
+  final Function()? onTap;
 
   const CustomMenuIcon({
     Key? key,
-    required this.routeName,
+    this.routeName,
     required this.icon,
     required this.semanticLabel,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -17,10 +19,19 @@ class CustomMenuIcon extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 10.0),
       child: GestureDetector(
-        onTap: () => Navigator.of(context).pushNamed(routeName),
+        onTap: () {
+          if (routeName != null) {
+            Navigator.of(context).pushNamed(routeName!);
+          } else if (onTap != null) {
+            onTap!();
+          } else {
+            debugPrint("No Binding Action Found");
+          }
+        },
         child: Icon(
           icon,
           semanticLabel: semanticLabel,
+          color: Colors.white70,
         ),
       ),
     );
