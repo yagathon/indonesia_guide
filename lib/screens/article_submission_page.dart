@@ -1,14 +1,12 @@
-import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:indonesia_guide/api/firebase_api_articles.dart';
-import 'package:indonesia_guide/constants/common.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/models/article.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
 import 'package:indonesia_guide/widgets/custom_app_bar.dart';
+import 'package:indonesia_guide/widgets/custom_dropdown.dart';
+import 'package:indonesia_guide/widgets/custom_textfield.dart';
 
 class ArticleSubmissionpage extends StatefulWidget {
   static const String route = RouteName.routeArticleSubmissionPage;
@@ -22,7 +20,7 @@ class _ArticleSubmissionPageState extends State<ArticleSubmissionpage> {
   final titleController = TextEditingController();
   final cityController = TextEditingController();
   final provinceController = TextEditingController();
-  final imageLinkController = TextEditingController();  
+  final imageLinkController = TextEditingController();
   final descController = TextEditingController();
   final ratingController = TextEditingController();
   final budgetController = TextEditingController();
@@ -41,57 +39,43 @@ class _ArticleSubmissionPageState extends State<ArticleSubmissionpage> {
     });
   }
 
-  Future uploadFile() async{
-    final path = 'files/my-image.jpg';
-    final file = File(pickedFile!.path!);
-
-  }
-
   @override
   Widget build(BuildContext context) {
-    List<DropdownMenuItem<String>> getDropdownItems(List<String> list) {
-      List<DropdownMenuItem<String>> menuItems = [
-        DropdownMenuItem(child: Text("Not Selected"), value: "Not Selected"),
-      ];
-      for (int i = 0; i < list.length; i++) {
-        menuItems.add(DropdownMenuItem(child: Text(list[i]), value: list[i]));
-      }
-      return menuItems;
-    }
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Article Submission Form'),
-        leading: GestureDetector(
-          child: const Icon(
-            Icons.arrow_back,
-          ),
-          onTap: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      appBar: const CustomAppBar(title: "Article Submission Form"),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: ListView(
-          primary: true,
+          addSemanticIndexes: true,
+          shrinkWrap: true,
+          primary: false,
           children: [
-            Text('Title'),
-            TextField(
+            const SizedBox(height: 20),
+            CustomTextfield(
+              title: "Title",
+              hintText: "Your article title",
               controller: titleController,
             ),
-            Text('City'),
-            TextField(
+            const SizedBox(height: 15),
+            CustomTextfield(
+              title: "City",
+              hintText: "The city of destination ",
               controller: cityController,
             ),
-            Text('Province'),
-            TextField(
+            const SizedBox(height: 15),
+            CustomTextfield(
+              title: "Province",
+              hintText: "The province of destination",
               controller: provinceController,
             ),
-            Text('Upload Image Link'),
-            TextField(
+            const SizedBox(height: 15),
+            CustomTextfield(
+              title: "Upload Image Link",
+              hintText: "Attach the url of your image",
               controller: imageLinkController,
+              keyboardType: TextInputType.url,
             ),
+            const SizedBox(height: 15),
             // Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             //   Text('Upload Image'),
             //   OutlinedButton(
@@ -118,60 +102,70 @@ class _ArticleSubmissionPageState extends State<ArticleSubmissionpage> {
             //       ),
             //     ),
             //   ),
-            Text('Article'),
-            TextField(
+            CustomTextfield(
+              title: "Article",
+              hintText: "Content of your article",
               controller: descController,
               keyboardType: TextInputType.multiline,
-              maxLines: null, // <-- SEE HERE
+              maxLines: null,
             ),
-            Text('Rating'),
-            DropdownButton(
-                value: selectedRating,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    selectedRating = newValue!;
-                  });
-                },
-                items: getDropdownItems(ratings)),
-            Text('Budget'),
-            TextField(
-              controller: budgetController,
-            ),
-            Text('Category'),
-            DropdownButton(
-                value: selectedCategory,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    selectedCategory = newValue!;
-                  });
-                },
-                items: getDropdownItems(categories)),
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                backgroundColor: R.colors.primary, //<-- SEE HERE
-                primary: Colors.white,
-              ),
-              onPressed: () {
-                final article = Article(
-                  title: titleController.text,
-                  province: provinceController.text,
-                  city: cityController.text,
-                  imageLinks: [imageLinkController.text],
-                  description: descController.text,
-                  rating: selectedRating == "Not Selected" ? 0 : int.parse(selectedRating),
-                  budget: budgetController.text,
-                  category: [selectedCategory],
-                  createdAt: DateTime.now()
-                ); 
-
-                FirebaseApiArticles.createArticle(article: article, context: context);
-                clearControllers();
+            const SizedBox(height: 15),
+            CustomDropdown(
+              title: "Rating",
+              obj: [
+                ...["Not Selected"],
+                ...R.strings.rating,
+              ],
+              callback: (val) {
+                selectedRating = val!;
+                setState(() {});
               },
-              child: const Text(
-                'Add Article',
-              ),
             ),
+            const SizedBox(height: 15),
+            CustomTextfield(
+              title: "Budget",
+              hintText: "Estimation budget",
+              controller: budgetController,
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 15),
+            CustomDropdown(
+              title: "Category",
+              obj: [
+                ...["Not Selected"],
+                ...R.strings.category,
+              ],
+              callback: (val) {
+                selectedCategory = val!;
+                setState(() {});
+              },
+            ),
+            const SizedBox(height: 100),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          final article = Article(
+              title: titleController.text,
+              province: provinceController.text,
+              city: cityController.text,
+              imageLinks: [imageLinkController.text],
+              description: descController.text,
+              rating: selectedRating == "Not Selected"
+                  ? 0
+                  : int.parse(selectedRating),
+              budget: "Rp ${budgetController.text}",
+              category: [selectedCategory],
+              createdAt: DateTime.now());
+
+          FirebaseApiArticles.createArticle(article: article, context: context);
+          clearControllers();
+        },
+        backgroundColor: R.colors.primary,
+        child: const Icon(
+          Icons.add,
+          semanticLabel: "Submit Article",
         ),
       ),
     );

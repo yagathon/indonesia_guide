@@ -8,7 +8,7 @@ class RangeTextfield extends StatefulWidget {
     required this.hintTextStart,
     required this.hintTextEnd,
     required this.callback,
-    this.keyboardType = TextInputType.none,
+    this.keyboardType = TextInputType.text,
   }) : super(key: key);
 
   final String title;
