@@ -21,6 +21,15 @@ class _ArticleViewerState extends State<ArticleViewer> {
   late String budget;
   late String categories;
   late double curRate;
+  final selectedImageIndex = ValueNotifier(0);
+
+  final dummyImages = [
+    R.assets.dummyImage1,
+    R.assets.dummyImage2,
+    R.assets.dummyImage3,
+    R.assets.dummyImage4,
+    R.assets.dummyImage5
+  ];
 
   @override
   void initState() {
@@ -97,10 +106,67 @@ class _ArticleViewerState extends State<ArticleViewer> {
                   ),
                   const SizedBox(height: 10),
                   Text(place, style: R.fontStyles.normalBlackBold),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 20),
-                    height: 200,
-                    color: Colors.amber,
+                  ValueListenableBuilder(
+                    valueListenable: selectedImageIndex,
+                    builder: (BuildContext context, value, Widget? child) {
+                      return Container(
+                        margin: const EdgeInsets.symmetric(vertical: 20),
+                        child: Column(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 10),
+                              height: 200,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: dummyImages[selectedImageIndex.value],
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 50,
+                              child: Center(
+                                child: ListView.separated(
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(width: 5),
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: dummyImages.length,
+                                  itemBuilder: (_, index) {
+                                    return GestureDetector(
+                                      onTap: (() {
+                                        debugPrint("index: $index");
+                                        selectedImageIndex.value = index;
+                                      }),
+                                      child: Container(
+                                        width: 50,
+                                        height: 50,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            colorFilter: ColorFilter.mode(
+                                              Colors.white.withOpacity(
+                                                  selectedImageIndex.value ==
+                                                          index
+                                                      ? 0.5
+                                                      : 0),
+                                              BlendMode.srcOver,
+                                            ),
+                                            fit: BoxFit.fill,
+                                            image: dummyImages[index],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    },
                   ),
                   Text(content),
                   Container(
@@ -156,9 +222,14 @@ class _ArticleViewerState extends State<ArticleViewer> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Budget: \$$budget", style: R.fontStyles.normalBlackBold),
-                Text("Category: $categories",
-                    style: R.fontStyles.normalBlackBold),
+                Text(
+                  "Budget: \$$budget",
+                  style: R.fontStyles.normalBlackBold,
+                ),
+                Text(
+                  "Category: $categories",
+                  style: R.fontStyles.normalBlackBold,
+                ),
               ],
             ),
             RatingBar.builder(

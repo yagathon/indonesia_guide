@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
 import 'package:indonesia_guide/widgets/article_viewer.dart';
@@ -22,9 +21,9 @@ class _ArticlePageState extends State<ArticlePage> {
 
   List<Widget> generatePages() {
     return [
-      ArticleViewer(),
-      ArticleViewer(),
-      ArticleViewer(),
+      const ArticleViewer(),
+      const ArticleViewer(),
+      const ArticleViewer(),
     ];
   }
 
