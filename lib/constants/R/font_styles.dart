@@ -30,4 +30,9 @@ class FontStyles {
     letterSpacing: -2,
     fontSize: h1Tsz,
   );
+
+  var normalWhiteBold = const TextStyle(
+    fontWeight: FontWeight.w900,
+    color: Colors.white60,
+  );
 }
