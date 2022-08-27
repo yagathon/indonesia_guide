@@ -53,6 +53,7 @@ class MyApp extends StatelessWidget {
         ArticleSubmissionpage.route: (context) => const ArticleSubmissionpage(),
         ArticleFilterPage.route: (context) => const ArticleFilterPage(),
         ArticlePage.route: (context) => const ArticlePage(),
+        ArticleSubmissionpage.route:(context) => const ArticleSubmissionpage(),
         GeneralInfoPage.route: (context) => const GeneralInfoPage(),
       },
     );
