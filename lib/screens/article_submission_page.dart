@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:indonesia_guide/api/firebase_api_articles.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/models/article.dart';
+import 'package:indonesia_guide/constants/route_name.dart';
+import 'package:indonesia_guide/widgets/custom_app_bar.dart';
 
-class ArticleSubmission extends StatefulWidget {
-  const ArticleSubmission({Key? key}) : super(key: key);
+class ArticleSubmissionpage extends StatefulWidget {
+  static const String route = RouteName.routeArticleSubmissionPage;
+  const ArticleSubmissionpage({Key? key}) : super(key: key);
 
   @override
-  _ArticleSubmissionState createState() => _ArticleSubmissionState();
+  State<ArticleSubmissionpage> createState() => _ArticleSubmissionpageState();
 }
 
 class _ArticleSubmissionState extends State<ArticleSubmission> {

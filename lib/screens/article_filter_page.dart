@@ -1,27 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:indonesia_guide/constants/route_name.dart';
+import 'package:indonesia_guide/widgets/custom_app_bar.dart';
 
-class ArticleFilter extends StatefulWidget {
-  const ArticleFilter({Key? key}) : super(key: key);
+class ArticleFilterPage extends StatefulWidget {
+  static const String route = RouteName.routeFilterPage;
+  const ArticleFilterPage({Key? key}) : super(key: key);
 
   @override
-  _ArticleFilterState createState() => _ArticleFilterState();
+  State<ArticleFilterPage> createState() => _ArticleFilterPageState();
 }
 
-class _ArticleFilterState extends State<ArticleFilter> {
+class _ArticleFilterPageState extends State<ArticleFilterPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-          child: const Icon(
-            Icons.arrow_back,
-          ),
-          onTap: (){
-            Navigator.pop(context);
-          },
-        ),
+    return const Scaffold(
+      appBar: CustomAppBar(),
+      body: Center(
+        child: Text('Filter Page'),
       ),
-      body: const Center(child: Text('Filter Page'),),
     );
   }
 }
