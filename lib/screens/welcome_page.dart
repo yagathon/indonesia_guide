@@ -15,11 +15,14 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   final dummyImages = [
-    R.assets.dummyImage1,
-    R.assets.dummyImage2,
-    R.assets.dummyImage3,
-    R.assets.dummyImage4,
-    R.assets.dummyImage5
+    R.assets.borobudur,
+    R.assets.bromo,
+    R.assets.wayangKulit,
+    R.assets.orangUtan,
+    R.assets.rawon,
+    R.assets.traditionalHouseWestSumba,
+    R.assets.serimpi,
+
   ];
 
   final themeMode = ValueNotifier(0);
@@ -128,7 +131,7 @@ class _WelcomePageState extends State<WelcomePage> {
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: Colors.grey.shade300,
                   ),
-                  child: Text(lorem(paragraphs: 1, words: 50)),
+                  child: Text(R.strings.aboutIndonesia),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(
