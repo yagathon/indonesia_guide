@@ -15,6 +15,7 @@ class Strings {
   String articleViewerAddBucketList = "Add this article to your bucket list";
 
   String filterPageTitle = "Filter";
+  String generalPageTitle = "Travel Information";
 
   final category = [
     "Accomodation",
