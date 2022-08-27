@@ -55,20 +55,20 @@ class _ArticleViewerState extends State<ArticleViewer> {
   processing() {
     title = widget.article.title ?? '';
     place =
-        (widget.article.city ?? '') + ", " + (widget.article.province ?? '');
+        "${widget.article.city ?? ''}, ${widget.article.province ?? ''}";
     content = (widget.article.description ?? '');
     budget = (widget.article.budget ?? '');
-    if (widget.article.category == null)
+    if (widget.article.category == null) {
       categories = '';
-    else {
+    } else {
       categories = widget.article.category![0];
     }
 
     curRate = 5.0;
     // curRate = (widget.article.rating ?? 0.0) as double;
-    if (widget.article.imageLinks == null)
+    if (widget.article.imageLinks == null) {
       imgLink = '';
-    else {
+    } else {
       imgLink = widget.article.imageLinks![0];
     }
 

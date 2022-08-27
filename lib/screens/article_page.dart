@@ -68,7 +68,7 @@ class _ArticlePageState extends State<ArticlePage> {
             } else if (snapshot.hasData) {
               debugPrint("test");
 
-              List<Object?> datas = snapshot.data!.docs.toList();
+              // List<Object?> datas = snapshot.data!.docs.toList();
 
               return PageView.builder(
                 controller: _controller,

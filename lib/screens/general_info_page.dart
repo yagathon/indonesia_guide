@@ -6,7 +6,7 @@ import 'package:indonesia_guide/widgets/custom_app_bar.dart';
 
 class GeneralInfoPage extends StatelessWidget {
   static const String route = RouteName.routeGeneralInfoPage;
-  const GeneralInfoPage({Key? key}) : super(key: key);
+  final _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class GeneralInfoPage extends StatelessWidget {
         title: R.strings.travelInformationPageTitle,
       ),
       body: SingleChildScrollView(
-        // controller: _scrollController,
+        controller: _scrollController,
         scrollDirection: Axis.vertical,
         physics: const BouncingScrollPhysics(),
         child: Container(
@@ -30,25 +30,30 @@ class GeneralInfoPage extends StatelessWidget {
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("The whole Indonesian archipelago is tropical, with temperatures always between 21°C and 33°C, although cooler in the mountains."),
-                  const SizedBox(height: 10),
-                  simpleContentText(
+                children: const [
+                  Text(
+                      "The whole Indonesian archipelago is tropical, with temperatures always between 21°C and 33°C, although cooler in the mountains."),
+                  SizedBox(height: 10),
+                  SimpleContentText(
                     title: "Emergencies Numbers",
                     content: "Police 110 \n"
-                      "Ambulance 118/119 \n"
-                      "Fire 113",),
-                  const SizedBox(height: 10),
-                  simpleContentText(
+                        "Ambulance 118/119 \n"
+                        "Fire 113",
+                  ),
+                  SizedBox(height: 10),
+                  SimpleContentText(
                     title: "Money and banks",
-                    content: "The Indonesian currency is the rupiah (“Rp”). Notes come in denominations of Rp500 (very rare), Rp1000, Rp5000, Rp10,000, Rp20,000, Rp50,000 and Rp100,000. Coins, mainly used for bemos, come in Rp25 (rare), Rp50, Rp100, Rp500 and Rp1000 denominations. Officially, rupiah are available outside Indonesia, but the currency’s volatile value means that few banks carry it \n"
-                        "You’ll find banks capable of handling foreign exchange in provincial capitals and bigger cities throughout Indonesia, and almost every town has at least one or two ATMs, which are also found within most Indomaret and Alfamart convenience stores. These generally accept at least one from Visa, MasterCard or Cirrus-Maestro.",),
-                  const SizedBox(height: 10),
-                  simpleContentText(
-                    title: "Plugs and Electricity",
-                    content: "The standard voltage throughout Indonesia is normally 230 V and with a standard frequency of 50 Hz. If you’re from the UK, Europe, Australia and most of Asia or Africa, most of your phones, laptops and other gadgets could be charged like normal. However, if you come from countries like the United States, Canada, and most South American countries, the range of voltage differs here in Indonesia. \n"
-                        "Most power plugs and sockets in Indonesia are type C and F. This plug is the 2 pin socket and plug design which is the standard European plug. If you’re coming from a country that does not use this type of sockets, you should buy an adapter."),
-                    const SizedBox(height: 10),
+                    content:
+                        "The Indonesian currency is the rupiah (“Rp”). Notes come in denominations of Rp500 (very rare), Rp1000, Rp5000, Rp10,000, Rp20,000, Rp50,000 and Rp100,000. Coins, mainly used for bemos, come in Rp25 (rare), Rp50, Rp100, Rp500 and Rp1000 denominations. Officially, rupiah are available outside Indonesia, but the currency’s volatile value means that few banks carry it \n"
+                        "You’ll find banks capable of handling foreign exchange in provincial capitals and bigger cities throughout Indonesia, and almost every town has at least one or two ATMs, which are also found within most Indomaret and Alfamart convenience stores. These generally accept at least one from Visa, MasterCard or Cirrus-Maestro.",
+                  ),
+                  SizedBox(height: 10),
+                  SimpleContentText(
+                      title: "Plugs and Electricity",
+                      content:
+                          "The standard voltage throughout Indonesia is normally 230 V and with a standard frequency of 50 Hz. If you’re from the UK, Europe, Australia and most of Asia or Africa, most of your phones, laptops and other gadgets could be charged like normal. However, if you come from countries like the United States, Canada, and most South American countries, the range of voltage differs here in Indonesia. \n"
+                          "Most power plugs and sockets in Indonesia are type C and F. This plug is the 2 pin socket and plug design which is the standard European plug. If you’re coming from a country that does not use this type of sockets, you should buy an adapter."),
+                  SizedBox(height: 10),
 
                   // ValueListenableBuilder(
                   //   valueListenable: selectedImageIndex,
@@ -112,7 +117,6 @@ class GeneralInfoPage extends StatelessWidget {
                   //     );
                   //   },
                   // ),
-
                 ],
               ),
             ),
@@ -121,6 +125,7 @@ class GeneralInfoPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          _scrollController.jumpTo(0);
         },
         backgroundColor: R.colors.primary,
         child: const Icon(Icons.arrow_upward),
@@ -129,11 +134,11 @@ class GeneralInfoPage extends StatelessWidget {
   }
 }
 
-class simpleContentText extends StatelessWidget {
+class SimpleContentText extends StatelessWidget {
   final String? title;
   final String? content;
 
-  const simpleContentText({
+  const SimpleContentText({
     Key? key,
     this.title,
     this.content,
@@ -144,9 +149,9 @@ class simpleContentText extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-          Text(title!, style: R.fontStyles.normalBlackBold),
-          const SizedBox(height: 5),
-          Text(content!),
+        Text(title!, style: R.fontStyles.normalBlackBold),
+        const SizedBox(height: 5),
+        Text(content!),
       ],
     );
   }
