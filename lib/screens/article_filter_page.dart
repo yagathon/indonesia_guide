@@ -16,8 +16,8 @@ class ArticleFilterPage extends StatefulWidget {
 }
 
 class _ArticleFilterPageState extends State<ArticleFilterPage> {
-  String? province;
-  String? city;
+  String? province = "All";
+  String? city = "All";
   int? startBudget;
   int? endBudget;
   String? category;
@@ -38,7 +38,7 @@ class _ArticleFilterPageState extends State<ArticleFilterPage> {
             const SizedBox(height: 20),
             CustomDropdown(
               title: "Province",
-              obj: R.strings.category,
+              obj: R.strings.provinces,
               callback: (val) {
                 debugPrint("province: $val");
                 province = val;
@@ -48,7 +48,7 @@ class _ArticleFilterPageState extends State<ArticleFilterPage> {
             const SizedBox(height: 15),
             CustomDropdown(
               title: "City",
-              obj: R.strings.category,
+              obj: R.strings.cities,
               callback: (val) {
                 debugPrint("city: $val");
                 city = val;

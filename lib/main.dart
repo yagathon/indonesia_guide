@@ -51,6 +51,7 @@ class MyApp extends StatelessWidget {
     // }
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: R.strings.appName,
       theme: ThemeData(
         textTheme: GoogleFonts.notoSansTextTheme(),
