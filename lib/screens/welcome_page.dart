@@ -57,6 +57,7 @@ class _WelcomePageState extends State<WelcomePage> {
                               autoPlayCurve: Curves.linear,
                               enableInfiniteScroll: false,
                               enlargeCenterPage: true,
+                              enlargeStrategy: CenterPageEnlargeStrategy.height,
                               onPageChanged: ((index, reason) {
                                 themeMode.value = index;
                               }),
