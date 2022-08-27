@@ -22,4 +22,6 @@ class Strings {
     "Event",
     "Food",
   ];
+
+  String aboutIndonesia = "With 17,000 Indonesian islands scattered between the Asian mainland and Australia, the archipelago has more than its share of natural wonders, curious wildlife, ethnic culture, unique food and unforgetful adventure. You’ll discover everything from the scorched landscape of Komodo to the lush volcanic slopes of Flores and the shimmering reefs of the Gili Islands. Spectacular crater lakes change colour before your eyes";
 }
