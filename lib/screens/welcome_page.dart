@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
-import 'package:flutter_lorem/flutter_lorem.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:indonesia_guide/util/function_logic.dart';
 import 'package:indonesia_guide/widgets/menu_button.dart';
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 
 class WelcomePage extends StatefulWidget {
   static const String route = RouteName.routeWelcomePage;
@@ -23,7 +23,6 @@ class _WelcomePageState extends State<WelcomePage> {
     R.assets.rawon,
     R.assets.traditionalHouseWestSumba,
     R.assets.serimpi,
-
   ];
 
   final themeMode = ValueNotifier(0);
@@ -33,8 +32,10 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: WillPopScope(
-          onWillPop: () async => false,
+        body: DoubleBackToCloseApp(
+          snackBar: const SnackBar(
+            content: Text('Tap back again to close'),
+          ),
           child: SingleChildScrollView(
             primary: true,
             child: Column(
