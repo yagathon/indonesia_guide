@@ -46,14 +46,7 @@ class _ArticlePageState extends State<ArticlePage> {
           CustomMenuIcon(
             icon: Icons.filter_alt,
             semanticLabel: R.strings.filter,
-            routeName: RouteName.routeDummyPage,
-          ),
-          CustomMenuIcon(
-            icon: Icons.share,
-            semanticLabel: R.strings.shareArticle,
-            onTap: () {
-              debugPrint("share");
-            },
+            onTap: () => Navigator.of(context).pop(),
           ),
         ],
       ),

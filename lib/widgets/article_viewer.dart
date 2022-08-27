@@ -62,6 +62,10 @@ class _ArticleViewerState extends State<ArticleViewer> {
     debugPrint("addToBucketList");
   }
 
+  shareArticle() {
+    debugPrint("shareArticle");
+  }
+
   giveRate(double star) {
     debugPrint("giveRate => ${star.toString()}");
   }
@@ -100,6 +104,14 @@ class _ArticleViewerState extends State<ArticleViewer> {
                           Icons.bookmark_add_outlined,
                           color: R.colors.primary,
                           semanticLabel: R.strings.articleViewerAddBucketList,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () => shareArticle(),
+                        child: Icon(
+                          Icons.share,
+                          color: R.colors.primary,
+                          semanticLabel: R.strings.shareArticle,
                         ),
                       ),
                     ],
