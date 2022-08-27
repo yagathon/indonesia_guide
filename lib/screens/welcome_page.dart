@@ -115,7 +115,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   child: Text(
                     R.strings.welcomePageHeader,
-                    style: R.fontStyles.h1BlackBold,
+                    style: R.fontStyles.h2BlackBold,
                   ),
                 ),
                 Container(
@@ -147,13 +147,13 @@ class _WelcomePageState extends State<WelcomePage> {
                       MenuButton(
                         icon: Icons.article_outlined,
                         semanticLabel: R.strings.articleSubmission,
-                        routeName: RouteName.routeDummyPage,
+                        routeName: RouteName.routeArticleSubmissionPage,
                         menuTitle: R.strings.articleSubmission,
                       ),
                       MenuButton(
                         icon: Icons.filter_alt,
                         semanticLabel: R.strings.filter,
-                        routeName: RouteName.routeArticlePage,
+                        routeName: RouteName.routeFilterPage,
                         menuTitle: R.strings.filter,
                       ),
                       MenuButton(

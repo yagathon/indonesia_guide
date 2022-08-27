@@ -13,4 +13,13 @@ class Strings {
 
   String articleViewerRatingIntro = "Do you find this article helpful?";
   String articleViewerAddBucketList = "Add this article to your bucket list";
+
+  String filterPageTitle = "Filter";
+
+  final category = [
+    "Accomodation",
+    "Destination",
+    "Event",
+    "Food",
+  ];
 }
