@@ -147,7 +147,7 @@ class _WelcomePageState extends State<WelcomePage> {
                       MenuButton(
                         icon: Icons.article_outlined,
                         semanticLabel: R.strings.articleSubmission,
-                        routeName: RouteName.routeDummyPage,
+                        routeName: RouteName.routeArticleSubmissionPage,
                         menuTitle: R.strings.articleSubmission,
                       ),
                       MenuButton(

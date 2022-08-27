@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/screens/article_page.dart';
+import 'package:indonesia_guide/screens/article_submission_page.dart';
 import 'package:indonesia_guide/screens/dummy_page.dart';
 import 'package:indonesia_guide/screens/general_info_page.dart';
 import 'package:indonesia_guide/screens/splash_screen.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         DummyPage.route: (context) => const DummyPage(),
         WelcomePage.route: (context) => const WelcomePage(),
         ArticlePage.route: (context) => const ArticlePage(),
+        ArticleSubmissionpage.route:(context) => const ArticleSubmissionpage(),
         GeneralInfoPage.route: (context) => const GeneralInfoPage(),
       },
     );

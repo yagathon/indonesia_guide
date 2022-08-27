@@ -10,7 +10,6 @@ class Article {
   int? rating;
   String? budget;
   List<String>? category;
-  String? mapLink;
   DateTime? createdAt;
 
   Article({
@@ -23,7 +22,6 @@ class Article {
     this.rating,
     this.budget,
     this.category,
-    this.mapLink,
     this.createdAt
   });
 
@@ -37,7 +35,6 @@ class Article {
     'rating' : rating,
     'budget' : budget,
     'category' : category,
-    'mapLink' : mapLink,
     'createdAt' : createdAt
   };
 

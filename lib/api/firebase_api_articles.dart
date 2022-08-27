@@ -7,14 +7,15 @@ import 'package:indonesia_guide/models/article.dart';
 class FirebaseApiArticles {
   static String ARTICLES_COLLECTION = 'articles';   
    
-  static Future createArticle({required String name, required BuildContext context}) async {
+  static Future createArticle({required Article article, required BuildContext context}) async {
     final docUser = FirebaseFirestore.instance.collection('articles').doc();
 
-    final article = Article(
-      id: docUser.id,
-      title: name,
-      createdAt: DateTime.now()
-    );
+    article.id = docUser.id;
+    // final article = Article(
+    //   id: docUser.id,
+    //   title: name,
+    //   createdAt: DateTime.now()
+    // );
 
     await docUser.set(article.toJson()).then((value) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
