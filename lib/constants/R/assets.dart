@@ -16,6 +16,8 @@ class Assets {
   final puraBesakih = const AssetImage("assets/images/Pura-Besakih-Bali.jpg");
   final puraUlun = const AssetImage("assets/images/Pura-Ulun-Danu-Bratan-temple-Bali.jpg");
   final traditionalHouseWestSumba = const AssetImage("assets/images/Traditional-Houses-West-Sumba.jpg");
+  final stIsland = const AssetImage("assets/images/riung.jpg");
+  final moramo = const AssetImage("assets/images/moramo.jpeg");
 
   //Food
   final gadoGado = const AssetImage("assets/images/GadoGado.jpg");

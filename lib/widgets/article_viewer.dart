@@ -6,8 +6,23 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:indonesia_guide/util/function_logic.dart';
 
 class ArticleViewer extends StatefulWidget {
+  final String title;
+  final String place;
+  final String content;
+  final String budget;
+  final String categories;
+  final double curRate;
+  final int imageIndex;
+
   const ArticleViewer({
     Key? key,
+    required this.title,
+    required this.content,
+    required this.budget,
+    required this.categories,
+    required this.curRate,
+    required this.place,
+    required this.imageIndex,
   }) : super(key: key);
 
   @override
@@ -23,14 +38,14 @@ class _ArticleViewerState extends State<ArticleViewer> {
   late String budget;
   late String categories;
   late double curRate;
-  final selectedImageIndex = ValueNotifier(0);
+  ValueNotifier selectedImageIndex = ValueNotifier(0);
 
   final dummyImages = [
-    R.assets.dummyImage1,
-    R.assets.dummyImage2,
-    R.assets.dummyImage3,
-    R.assets.dummyImage4,
-    R.assets.dummyImage5
+    R.assets.moramo,
+    R.assets.stIsland,
+    R.assets.batik,
+    R.assets.wayangKulit,
+    R.assets.orangUtan
   ];
 
   @override
@@ -51,12 +66,13 @@ class _ArticleViewerState extends State<ArticleViewer> {
   }
 
   processing() {
-    title = "Saung Angklung Udjo";
-    place = "Bandung, West Java";
-    content = lorem(paragraphs: 2, words: 200);
-    budget = "100";
-    categories = "Destination, Event";
-    curRate = 3;
+    title = widget.title;
+    place = widget.place;
+    content = widget.content;
+    budget = widget.budget;
+    categories = widget.categories;
+    curRate = widget.curRate;
+    selectedImageIndex = ValueNotifier(widget.imageIndex);
     setState(() {});
   }
 

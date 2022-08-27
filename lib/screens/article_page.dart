@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:indonesia_guide/constants/DummyArticle.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
 import 'package:indonesia_guide/util/function_logic.dart';
@@ -22,9 +23,33 @@ class _ArticlePageState extends State<ArticlePage> {
 
   List<Widget> generatePages() {
     return [
-      const ArticleViewer(),
-      const ArticleViewer(),
-      const ArticleViewer(),
+      const ArticleViewer(
+        title: Dummy.title1,
+        place: Dummy.place1,
+        content: Dummy.content1,
+        categories: Dummy.categories1,
+        curRate: 4.5,
+        budget: Dummy.budget1,
+        imageIndex: 0,
+      ),
+      const ArticleViewer(
+        title: Dummy.title2,
+        place: Dummy.place2,
+        content: Dummy.content2,
+        categories: Dummy.categories2,
+        curRate: 4.5,
+        budget: Dummy.budget2,
+        imageIndex: 1,
+      ),
+      const ArticleViewer(
+        title: Dummy.title3,
+        place: Dummy.place3,
+        content: Dummy.content3,
+        categories: Dummy.categories3,
+        curRate: 4.5,
+        budget: Dummy.budget3,
+        imageIndex: 2,
+      ),
     ];
   }
 
