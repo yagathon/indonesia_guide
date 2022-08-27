@@ -8,8 +8,13 @@ import 'package:indonesia_guide/util/function_logic.dart';
 
 class ArticleViewer extends StatefulWidget {
   final Article article;
+  final String page;
 
-  const ArticleViewer({Key? key, required this.article}) : super(key: key);
+  const ArticleViewer({
+    Key? key,
+    required this.article,
+    required this.page,
+  }) : super(key: key);
 
   @override
   State<ArticleViewer> createState() => _ArticleViewerState();
@@ -54,8 +59,7 @@ class _ArticleViewerState extends State<ArticleViewer> {
 
   processing() {
     title = widget.article.title ?? '';
-    place =
-        "${widget.article.city ?? ''}, ${widget.article.province ?? ''}";
+    place = "${widget.article.city ?? ''}, ${widget.article.province ?? ''}";
     content = (widget.article.description ?? '');
     budget = (widget.article.budget ?? '');
     if (widget.article.category == null) {
@@ -114,6 +118,7 @@ class _ArticleViewerState extends State<ArticleViewer> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(widget.page),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,

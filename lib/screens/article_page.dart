@@ -69,10 +69,10 @@ class _ArticlePageState extends State<ArticlePage> {
               debugPrint("test");
 
               // List<Object?> datas = snapshot.data!.docs.toList();
-
+              var totalData = snapshot.data!.docs.length;
               return PageView.builder(
                 controller: _controller,
-                itemCount: snapshot.data!.docs.length,
+                itemCount: totalData,
                 itemBuilder: (context, index) {
                   final currentData = snapshot.data!.docs.toList()[index];
                   final article = Article(
@@ -85,7 +85,10 @@ class _ArticlePageState extends State<ArticlePage> {
                     budget: currentData['budget'],
                     category: currentData['category'],
                   );
-                  return ArticleViewer(article: article);
+                  return ArticleViewer(
+                    article: article,
+                    page: "Article ${(index + 1).toString()} of $totalData",
+                  );
                 },
               );
             } else {
