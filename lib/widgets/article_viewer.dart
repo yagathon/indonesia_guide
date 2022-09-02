@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:indonesia_guide/models/article.dart';
+import 'package:indonesia_guide/screens/article_how_to_get_there_page.dart';
 import 'package:indonesia_guide/util/function_logic.dart';
 
 class ArticleViewer extends StatefulWidget {
@@ -271,38 +272,66 @@ class _ArticleViewerState extends State<ArticleViewer> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+            Row(
               children: [
-                Text(
-                  "Budget: $budget",
-                  style: R.fontStyles.normalBlackBold,
-                ),
-                Text(
-                  "Category: $categories",
-                  style: R.fontStyles.normalBlackBold,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Budget: $budget",
+                      style: R.fontStyles.normalBlackBold,
+                    ),
+                    Text(
+                      "Category: $categories",
+                      style: R.fontStyles.normalBlackBold,
+                    ),
+                  ],
                 ),
               ],
             ),
-            RatingBar.builder(
-              ignoreGestures: true,
-              initialRating: curRate,
-              minRating: 1,
-              direction: Axis.horizontal,
-              allowHalfRating: false,
-              itemCount: 5,
-              itemSize: 20,
-              itemBuilder: (context, index) => Icon(
-                Icons.star,
-                color: Colors.amber,
-                semanticLabel: "${index.toString()} star(s)",
-              ),
-              onRatingUpdate: (value) {},
+            Row(
+              children: [
+                RatingBar.builder(
+                  ignoreGestures: true,
+                  initialRating: curRate,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: false,
+                  itemCount: 5,
+                  itemSize: 20,
+                  itemBuilder: (context, index) => Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                    semanticLabel: "${index.toString()} star(s)",
+                  ),
+                  onRatingUpdate: (value) {},
+                ),
+                const SizedBox(width: 10),
+                GestureDetector(
+                  onTap: () => howToGetThere(),
+                  child: Icon(
+                    Icons.place,
+                    color: R.colors.primary,
+                    semanticLabel: R.strings.articleViewerHowToGetThere,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  howToGetThere() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) {
+        return HowToGetTherePage(
+          title: title,
+          place: place,
+        );
+      },
+    ));
   }
 }

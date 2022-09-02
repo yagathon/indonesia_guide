@@ -13,6 +13,9 @@ class Strings {
 
   String articleViewerRatingIntro = "Do you find this article helpful?";
   String articleViewerAddBucketList = "Add this article to your bucket list";
+  String articleViewerRemoveBucketList =
+      "Remove this article to your bucket list";
+  String articleViewerHowToGetThere = "How to get there";
 
   String filterPageTitle = "Filter";
   String travelInformationPageTitle = "Travel Information";
@@ -41,10 +44,5 @@ class Strings {
     "Southeast Sulawesi"
   ];
 
-  final List<String> cities = [
-    "All",
-    "Flores",
-    "South Konawe Regency"
-  ];
-
+  final List<String> cities = ["All", "Flores", "South Konawe Regency"];
 }

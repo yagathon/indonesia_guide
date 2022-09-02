@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/constants/route_name.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:indonesia_guide/util/function_logic.dart';
 import 'package:indonesia_guide/widgets/menu_button.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 
@@ -165,7 +164,8 @@ class _WelcomePageState extends State<WelcomePage> {
                       MenuButton(
                         icon: Icons.bookmark,
                         semanticLabel: R.strings.bucketList,
-                        onTap: () => showComingSoonSnackBar(context),
+                        // onTap: () => showComingSoonSnackBar(context),
+                        routeName: RouteName.routeBucketListPage,
                         menuTitle: R.strings.bucketList,
                       ),
                       MenuButton(

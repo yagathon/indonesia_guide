@@ -14,8 +14,10 @@ class Assets {
   final bromo = const AssetImage("assets/images/Bromo.jpg");
   final prambanan = const AssetImage("assets/images/Prambanan.jpg");
   final puraBesakih = const AssetImage("assets/images/Pura-Besakih-Bali.jpg");
-  final puraUlun = const AssetImage("assets/images/Pura-Ulun-Danu-Bratan-temple-Bali.jpg");
-  final traditionalHouseWestSumba = const AssetImage("assets/images/Traditional-Houses-West-Sumba.jpg");
+  final puraUlun =
+      const AssetImage("assets/images/Pura-Ulun-Danu-Bratan-temple-Bali.jpg");
+  final traditionalHouseWestSumba =
+      const AssetImage("assets/images/Traditional-Houses-West-Sumba.jpg");
 
   //Food
   final gadoGado = const AssetImage("assets/images/GadoGado.jpg");
@@ -25,7 +27,8 @@ class Assets {
   final sate = const AssetImage("assets/images/Sate.jpg");
 
   //Traditonal Dance
-  final ramaShinta = const AssetImage("assets/images/Javanese-Dance-Ramayana-Shinta.jpg");
+  final ramaShinta =
+      const AssetImage("assets/images/Javanese-Dance-Ramayana-Shinta.jpg");
   final serimpi = const AssetImage("assets/images/SerimpiDance.jpg");
 
   //Flora & Fauna
@@ -35,4 +38,6 @@ class Assets {
   final wayangKulit = const AssetImage("assets/images/Wayang-Kulit.jpg");
   final batik = const AssetImage("assets/images/Batik.jpg");
 
+  //Map
+  final exampleMap = const AssetImage("assets/images/example_map.png");
 }

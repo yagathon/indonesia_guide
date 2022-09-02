@@ -7,8 +7,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:indonesia_guide/constants/r.dart';
 import 'package:indonesia_guide/screens/article_filter_page.dart';
+import 'package:indonesia_guide/screens/article_how_to_get_there_page.dart';
 import 'package:indonesia_guide/screens/article_page.dart';
 import 'package:indonesia_guide/screens/article_submission_page.dart';
+import 'package:indonesia_guide/screens/bucket_list_page.dart';
 import 'package:indonesia_guide/screens/dummy_page.dart';
 import 'package:indonesia_guide/screens/general_info_page.dart';
 import 'package:indonesia_guide/screens/splash_screen.dart';
@@ -70,7 +72,9 @@ class MyApp extends StatelessWidget {
         ArticleSubmissionpage.route: (context) => const ArticleSubmissionpage(),
         ArticleFilterPage.route: (context) => const ArticleFilterPage(),
         ArticlePage.route: (context) => const ArticlePage(),
+        HowToGetTherePage.route: (context) => const HowToGetTherePage(),
         GeneralInfoPage.route: (context) => GeneralInfoPage(),
+        BucketListPage.route: (context) => const BucketListPage(),
       },
     );
   }

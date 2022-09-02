@@ -41,6 +41,12 @@ class FontStyles {
     fontSize: h2,
   );
 
+  var h4BlackBold = const TextStyle(
+    fontWeight: FontWeight.w900,
+    color: Colors.black,
+    fontSize: h4,
+  );
+
   var normalBlackBold = const TextStyle(
     fontWeight: FontWeight.w900,
     color: Colors.black,
